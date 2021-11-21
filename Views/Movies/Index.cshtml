@@ -1,0 +1,106 @@
+﻿@model MvcMovie.Models.MovieGenreViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<header class=" text-white  masthead  " style="background-image:url('../assets/img/intro-bg.jpg');">
+    <p></p>
+    <h1 class="fw-bold text-white">電影清單</h1>
+    <p>
+
+    </p>
+
+    <form asp-controller="Movies" asp-action="Index" method="get" >
+        <p>
+
+            <select asp-for="MovieGenre" asp-items="Model.Genres" class="btn btn-dark ">
+                <option value="">所有</option>
+            </select>
+
+            標題: <input type="text" asp-for="SearchString" class=" btn-dark btn"/>
+            <input type="submit" class="btn btn-primary mb-0" value="搜尋" />
+        </p>
+    </form>
+
+    <table class="table   box-2 text-white">
+
+        <thead>
+            <tr>
+                <th>
+                    標題
+                </th>
+                <th>
+                    釋出日期
+                </th>
+                <th>
+                    種類
+                </th>
+                <th>
+                    價格
+                </th>
+                <th>
+                    分級
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Movies)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReleaseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td class="">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="fw-bold text-primary ">編輯</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" class="fw-bold text-primary">詳細</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="fw-bold text-primary ">刪除</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</header>
+<style>
+    .box-2 {
+        background: rgba(0,0,0,0.3);
+        margin-bottom: 10px;
+    }
+</style>
+<style>
+
+    .box-1 {
+        background: rgba(255,255,255,1);
+        margin-bottom: 10px;
+        pointer-events: none;
+        opacity: .65
+    }
+
+    .btn-dark {
+        color: #fff;
+        background-color: #212529;
+        opacity: 0.6;
+        border-color: #212529
+    }
+
+
+    .btn-light1 {
+        color: #000;
+        background-color: #f8f9fa;
+        opacity: 0.6;
+        border-color: #f8f9fa
+    }
+
+</style>

@@ -1,0 +1,58 @@
+﻿@model MvcMovie.Models.Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+<section class="masthead text-faded " style="background-image:url('../../assets/img/intro-bg.jpg');">
+    <p></p>
+    <h1 class="fw-bold text-white text-center">細節</h1>
+    <div class="col-md-2 mx-auto text-faded ">
+
+        <dl class="row">
+            <dt class="col-sm-6">
+                標題
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class="col-sm-6">
+                釋出日期
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.ReleaseDate)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Genre)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Genre)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Rating)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Rating)
+            </dd>
+        </dl>
+    </div>
+    <div class="text-center">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-light1 mb-2">編輯</a> 
+         <a asp-controller="Movies" asp-action="index" class="btn btn-light1 mb-2">回到課程清單</a>
+
+    </div>
+</section>
+<style>
+    .btn-light1 {
+        color: #000;
+        background-color: #f8f9fa;
+        opacity: 0.6;
+        border-color: #f8f9fa
+    }
+</style>
